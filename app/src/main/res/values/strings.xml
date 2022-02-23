@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Filmapp</string>
+
+    <string name="sign_in_title">FILMAPP</string>
+    <string name="sign_in_description">Faça login com a sua\nconta Google e assista seus\nfilmes e séries favoritas</string>
+    <string name="sign_in_failed_to_open_google_sign_in">Falha ao abrir a tela de login do Google</string>
+    <string name="sign_in_authentication_failed">Falha na autenticação</string>
+    <string name="sign_in_something_went_wrong_in_google_sign_in">Algo deu errado ao tentar fazer login com a conta do Google</string>
+</resources>
