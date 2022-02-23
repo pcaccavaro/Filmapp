@@ -65,7 +65,7 @@ class SignInViewModelTest {
     }
 
     private fun setUpProcessEvent() {
-        mockkStatic("com.example.filmsapp.util.LogExtensionsKt")
+        mockkStatic("com.example.filmapp.util.LogExtensionsKt")
 
         setUpSignInViewModel()
 
