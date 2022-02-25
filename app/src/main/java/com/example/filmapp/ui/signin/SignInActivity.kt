@@ -9,11 +9,11 @@ import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.example.filmapp.R
 import com.example.filmapp.data.repository.AuthRepository
+import com.example.filmapp.databinding.ActivitySignInBinding
 import com.example.filmapp.ui.common.BaseActivity
 import com.example.filmapp.ui.home.HomeActivity
 import com.example.filmapp.util.logDTag
 import com.example.filmapp.util.logETag
-import com.example.filmapp.databinding.ActivitySignInBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -23,7 +23,12 @@ class SignInActivity : BaseActivity<SignInEvent, SignInAction>() {
 
     private lateinit var googleSignInClient: GoogleSignInClient
 
-    override val viewModel by viewModels<SignInViewModel> { SignInViewModelFactory(application, AuthRepository()) }
+    override val viewModel by viewModels<SignInViewModel> {
+        SignInViewModelFactory(
+            application,
+            AuthRepository()
+        )
+    }
 
     private val googleSignInActivityResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -60,10 +65,8 @@ class SignInActivity : BaseActivity<SignInEvent, SignInAction>() {
         logDTag("processAction: $action")
 
         when (action) {
-            SignInAction.StartGoogleSignIn ->
-                googleSignInActivityResult.launch(googleSignInClient.signInIntent)
-            is SignInAction.ShowGoogleSignInFailedToast ->
-                showGoogleSignInFailedToast(action.toastMessage)
+            SignInAction.StartGoogleSignIn -> googleSignInActivityResult.launch(googleSignInClient.signInIntent)
+            is SignInAction.ShowGoogleSignInFailedToast -> showGoogleSignInFailedToast(action.toastMessage)
             SignInAction.StartHomeScreen -> {
                 startActivity(Intent(this, HomeActivity::class.java))
                 finish()
