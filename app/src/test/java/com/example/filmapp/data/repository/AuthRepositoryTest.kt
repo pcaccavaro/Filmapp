@@ -21,7 +21,7 @@ class AuthRepositoryTest {
     }
 
     private lateinit var authRepository: AuthRepository
-    private lateinit var authResource: Flow<Resource>
+    private lateinit var authResource: Flow<Resource<AuthResult>>
 
     private val credentialMocked = mockk<AuthCredential>()
     private val taskAuthResultMocked = mockk<Task<AuthResult>>(relaxed = true)
@@ -56,7 +56,7 @@ class AuthRepositoryTest {
     fun `should firebase auth with google return the resource loading state when firebase sign in with credential not come`() {
         authResource = authRepository.firebaseAuthWithGoogle(googleAuthCredential = credentialMocked)
 
-        runBlocking { Assert.assertEquals(authResource.first(), Resource.ResourceLoading) }
+        runBlocking { Assert.assertEquals(authResource.first(), Resource.Loading<AuthResult>()) }
     }
 
     @Test
@@ -67,7 +67,7 @@ class AuthRepositoryTest {
 
         setUpAddOnCompleteListener(isOnCompleteTaskSuccessful = true, firebaseUser = mockk())
 
-        runBlocking { Assert.assertEquals(authResource.first(), Resource.ResourceSuccess(authResultMocked)) }
+        runBlocking { Assert.assertEquals(authResource.first(), Resource.Success(authResultMocked)) }
     }
 
     @Test
@@ -76,7 +76,7 @@ class AuthRepositoryTest {
 
         setUpAddOnCompleteListener()
 
-        runBlocking { Assert.assertEquals(authResource.first(), Resource.ResourceError(errorMessage = EXCEPTION_MESSAGE)) }
+        runBlocking { Assert.assertEquals(authResource.first(), Resource.Error<AuthResult>(errorMessage = EXCEPTION_MESSAGE)) }
     }
 
     @Test
@@ -85,6 +85,6 @@ class AuthRepositoryTest {
 
         setUpAddOnCompleteListener(isOnCompleteTaskSuccessful = true)
 
-        runBlocking { Assert.assertEquals(authResource.first(), Resource.ResourceError(errorMessage = null)) }
+        runBlocking { Assert.assertEquals(authResource.first(), Resource.Error<AuthResult>(errorMessage = null)) }
     }
 }

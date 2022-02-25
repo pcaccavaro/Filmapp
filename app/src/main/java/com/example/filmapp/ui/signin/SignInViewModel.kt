@@ -51,13 +51,13 @@ open class SignInViewModel(private val app: Application, private val authReposit
         viewModelScope.launch {
             authRepository.firebaseAuthWithGoogle(googleAuthCredential).collect { authResource ->
                 when(authResource) {
-                    is Resource.ResourceError -> {
+                    is Resource.Error -> {
                         // If sign in fails, display a message to the user
                         this@SignInViewModel.logETag("firebaseAuthWithGoogle: Fail -> ${authResource.errorMessage}")
                         setAction(SignInAction.ShowGoogleSignInFailedToast(toastMessage = app.getString(R.string.sign_in_authentication_failed)))
                     }
-                    Resource.ResourceLoading -> this@SignInViewModel.logDTag("firebaseAuthWithGoogle: Loading")
-                    is Resource.ResourceSuccess<*> -> {
+                    is Resource.Loading -> this@SignInViewModel.logDTag("firebaseAuthWithGoogle: Loading")
+                    is Resource.Success -> {
                         // Sign in success, update UI with user's information
                         this@SignInViewModel.logDTag("firebaseAuthWithGoogle: Success")
                         setAction(SignInAction.StartHomeScreen)

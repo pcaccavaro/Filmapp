@@ -90,7 +90,7 @@ class SignInViewModelTest {
     }
 
     @ExperimentalCoroutinesApi
-    private fun setUpFirebaseAuthWithGoogle(resource: Resource) {
+    private fun setUpFirebaseAuthWithGoogle(resource: Resource<AuthResult>) {
         setUpGoogleCredentials()
 
         every {
@@ -201,7 +201,7 @@ class SignInViewModelTest {
     @ExperimentalCoroutinesApi
     @Test(expected = TimeoutException::class)
     fun `should log process information and resource loading information when google sign in intent came success`() {
-        setUpFirebaseAuthWithGoogle(resource = Resource.ResourceLoading)
+        setUpFirebaseAuthWithGoogle(resource = Resource.Loading())
 
         runTest {
             signInViewModelForTesting.processEventForTesting(
@@ -225,7 +225,7 @@ class SignInViewModelTest {
     @ExperimentalCoroutinesApi
     @Test
     fun `should log process information, resource success information and start home screen when firebase auth with google returns success`() {
-        setUpFirebaseAuthWithGoogle(resource = Resource.ResourceSuccess<AuthResult>(data = mockk()))
+        setUpFirebaseAuthWithGoogle(resource = Resource.Success(data = mockk()))
 
         runTest {
             signInViewModelForTesting.processEventForTesting(
@@ -246,7 +246,7 @@ class SignInViewModelTest {
     @ExperimentalCoroutinesApi
     @Test
     fun `should log process information, resource error information and show google sign in failed toast when firebase auth with google returns error`() {
-        setUpFirebaseAuthWithGoogle(resource = Resource.ResourceError(errorMessage = SIGN_IN_ERROR_MESSAGE_TOAST))
+        setUpFirebaseAuthWithGoogle(resource = Resource.Error(errorMessage = SIGN_IN_ERROR_MESSAGE_TOAST))
         setUpGoogleSignInFailedToast()
 
         runTest {
