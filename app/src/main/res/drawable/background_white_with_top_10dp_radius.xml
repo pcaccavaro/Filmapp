@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/filmapp_color_FFFFFF" />
+    <corners
+        android:topLeftRadius="@dimen/filmapp_10_dp"
+        android:topRightRadius="@dimen/filmapp_10_dp"
+        android:bottomLeftRadius="@dimen/filmapp_0_dp"
+        android:bottomRightRadius="@dimen/filmapp_0_dp"/>
+</shape>

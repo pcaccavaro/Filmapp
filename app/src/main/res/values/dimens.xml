@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="filmapp_0_dp">0dp</dimen>
+    <dimen name="filmapp_4_dp">4dp</dimen>
+    <dimen name="filmapp_5_dp">5dp</dimen>
+    <dimen name="filmapp_6_dp">6dp</dimen>
+    <dimen name="filmapp_8_dp">8dp</dimen>
+    <dimen name="filmapp_10_dp">10dp</dimen>
+    <dimen name="filmapp_12_dp">12dp</dimen>
+    <dimen name="filmapp_24_dp">24dp</dimen>
+    <dimen name="filmapp_25_dp">25dp</dimen>
+    <dimen name="filmapp_30_dp">30dp</dimen>
+    <dimen name="filmapp_100_dp">100dp</dimen>
+    <dimen name="filmapp_175_dp">175dp</dimen>
+    <dimen name="filmapp_200_dp">200dp</dimen>
+    <dimen name="filmapp_280_dp">280dp</dimen>
+    <dimen name="filmapp_320_dp">320dp</dimen>
+</resources>

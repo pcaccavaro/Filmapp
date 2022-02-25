@@ -3,11 +3,77 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.home.HomeActivity">
+        android:layout_height="match_parent">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.home.HomeActivity">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/activity_home_popular_movies_title"
+                style="@style/title_26_sp_and_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/filmapp_24_dp"
+                android:layout_marginTop="@dimen/filmapp_30_dp"
+                android:text="@string/home_popular_movies_title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/activity_home_popular_movies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/filmapp_24_dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/activity_home_popular_movies_title"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/movie_list_item"/>
+
+            <TextView
+                android:id="@+id/activity_home_top_rated_movies_title"
+                style="@style/title_26_sp_and_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/filmapp_6_dp"
+                android:text="@string/home_top_rated_movies_title"
+                app:layout_constraintTop_toBottomOf="@id/activity_home_popular_movies"
+                app:layout_constraintStart_toStartOf="@id/activity_home_popular_movies_title"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/activity_home_top_rated_movies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/filmapp_24_dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/activity_home_top_rated_movies_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/movie_list_item"/>
+
+            <TextView
+                android:id="@+id/activity_home_upcoming_movies_title"
+                style="@style/title_26_sp_and_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/filmapp_6_dp"
+                android:text="@string/home_upcoming_movies_title"
+                app:layout_constraintTop_toBottomOf="@id/activity_home_top_rated_movies"
+                app:layout_constraintStart_toStartOf="@id/activity_home_top_rated_movies"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/activity_home_upcoming_movies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/filmapp_24_dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/activity_home_upcoming_movies_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/movie_list_item"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

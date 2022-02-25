@@ -5,9 +5,22 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="title_20_sp_and_bold">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="description_20_sp_italic_and_centralized">
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">italic</item>
         <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="description_14_sp">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="description_14_sp_italic" parent="description_14_sp">
+        <item name="android:textStyle">italic</item>
     </style>
 </resources>

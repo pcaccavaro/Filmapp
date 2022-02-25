@@ -6,4 +6,10 @@
     <string name="sign_in_failed_to_open_google_sign_in">Falha ao abrir a tela de login do Google</string>
     <string name="sign_in_authentication_failed">Falha na autenticação</string>
     <string name="sign_in_something_went_wrong_in_google_sign_in">Algo deu errado ao tentar fazer login com a conta do Google</string>
+
+    <string name="home_popular_movies_title">Filmes Populares</string>
+    <string name="home_top_rated_movies_title">Filmes Mais Votados</string>
+    <string name="home_upcoming_movies_title">Próximos Filmes</string>
+    <string name="home_release_date_title">Data de Lançamento</string>
+    <string name="home_vote_average_title">Média de Votos</string>
 </resources>
