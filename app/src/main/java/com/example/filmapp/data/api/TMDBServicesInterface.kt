@@ -4,7 +4,7 @@ import com.example.filmapp.BuildConfig
 import com.example.filmapp.data.model.PopularMoviesResponse
 import com.example.filmapp.data.model.TopRatedMoviesResponse
 import com.example.filmapp.data.model.UpcomingMoviesResponse
-import kotlinx.coroutines.flow.Flow
+import com.example.filmapp.data.repository.Resource
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -20,11 +20,11 @@ interface TMDBServicesInterface {
     }
 
     @GET(TMDB_POPULAR_MOVIES_PATH)
-    suspend fun getPopularMovies(@Query(TMDB_API_KEY_QUERY) apiKey: String = BuildConfig.API_KEY): Flow<PopularMoviesResponse>
+    suspend fun getPopularMovies(@Query(TMDB_API_KEY_QUERY) apiKey: String = BuildConfig.API_KEY): Resource<PopularMoviesResponse>
 
     @GET(TMDB_TOP_RATED_MOVIES_PATH)
-    suspend fun getTopRatedMovies(@Query(TMDB_API_KEY_QUERY) apiKey: String = BuildConfig.API_KEY): Flow<TopRatedMoviesResponse>
+    suspend fun getTopRatedMovies(@Query(TMDB_API_KEY_QUERY) apiKey: String = BuildConfig.API_KEY): Resource<TopRatedMoviesResponse>
 
     @GET(TMDB_UPCOMING_MOVIES_PATH)
-    suspend fun getUpcomingMovies(@Query(TMDB_API_KEY_QUERY) apiKey: String = BuildConfig.API_KEY): Flow<UpcomingMoviesResponse>
+    suspend fun getUpcomingMovies(@Query(TMDB_API_KEY_QUERY) apiKey: String = BuildConfig.API_KEY): Resource<UpcomingMoviesResponse>
 }
