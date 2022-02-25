@@ -12,6 +12,10 @@ class HomeActivity : BaseActivity<HomeEvent, HomeAction>() {
 
     private lateinit var binding: ActivityHomeBinding
 
+    private lateinit var popularMoviesAdapter: HomeAdapter
+    private lateinit var topRatedMoviesAdapter: HomeAdapter
+    private lateinit var upcomingMoviesAdapter: HomeAdapter
+
     override val viewModel by viewModels<HomeViewModel> {
         HomeViewModelFactory(
             application,
@@ -22,13 +26,33 @@ class HomeActivity : BaseActivity<HomeEvent, HomeAction>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
+        binding.lifecycleOwner = this
+
+        setUpPopularMoviesAdapter()
+        setUpTopRatedMoviesAdapter()
+        setUpUpcomingMoviesAdapter()
+    }
+
+    private fun setUpPopularMoviesAdapter() {
+        popularMoviesAdapter = HomeAdapter()
+        binding.activityHomePopularMovies.adapter = popularMoviesAdapter
+    }
+
+    private fun setUpTopRatedMoviesAdapter() {
+        topRatedMoviesAdapter = HomeAdapter()
+        binding.activityHomeTopRatedMovies.adapter = topRatedMoviesAdapter
+    }
+
+    private fun setUpUpcomingMoviesAdapter() {
+        upcomingMoviesAdapter = HomeAdapter()
+        binding.activityHomeUpcomingMovies.adapter = upcomingMoviesAdapter
     }
 
     override fun processAction(action: HomeAction) {
         when(action) {
-            is HomeAction.ShowPopularMovieList -> TODO()
-            is HomeAction.ShowTopRatedMovieList -> TODO()
-            is HomeAction.ShowUpcomingMovieList -> TODO()
+            is HomeAction.ShowPopularMovieList -> popularMoviesAdapter.setMovieList(action.popularMovieList)
+            is HomeAction.ShowTopRatedMovieList -> topRatedMoviesAdapter.setMovieList(action.topRatedMovieList)
+            is HomeAction.ShowUpcomingMovieList -> upcomingMoviesAdapter.setMovieList(action.upcomingMovieList)
         }
     }
 }

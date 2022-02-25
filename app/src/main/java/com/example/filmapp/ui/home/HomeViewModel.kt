@@ -34,7 +34,13 @@ class HomeViewModel(app: Application, private val tmdbRepository: TMDBRepository
                 when(popularMoviesResource) {
                     is Resource.Error -> this@HomeViewModel.logETag("getPopularMovies: Fail -> ${popularMoviesResource.errorMessage}")
                     is Resource.Loading -> this@HomeViewModel.logDTag("getPopularMovies: Loading")
-                    is Resource.Success -> this@HomeViewModel.logDTag("getPopularMovies: Success")
+                    is Resource.Success -> {
+                        this@HomeViewModel.logDTag("getPopularMovies: Success")
+                        val popularMovies = popularMoviesResource.data.results
+                        if (popularMovies != null) {
+                            setAction(HomeAction.ShowPopularMovieList(popularMovies))
+                        }
+                    }
                 }
             }
         }
@@ -46,7 +52,13 @@ class HomeViewModel(app: Application, private val tmdbRepository: TMDBRepository
                 when(topRatedMoviesResource) {
                     is Resource.Error -> this@HomeViewModel.logETag("getTopRatedMovies: Fail -> ${topRatedMoviesResource.errorMessage}")
                     is Resource.Loading -> this@HomeViewModel.logDTag("getTopRatedMovies: Loading")
-                    is Resource.Success -> this@HomeViewModel.logDTag("getTopRatedMovies: Success")
+                    is Resource.Success -> {
+                        this@HomeViewModel.logDTag("getTopRatedMovies: Success")
+                        val topRatedMovies = topRatedMoviesResource.data.results
+                        if (topRatedMovies != null) {
+                            setAction(HomeAction.ShowTopRatedMovieList(topRatedMovies))
+                        }
+                    }
                 }
             }
         }
@@ -58,7 +70,13 @@ class HomeViewModel(app: Application, private val tmdbRepository: TMDBRepository
                 when(upcomingMoviesResource) {
                     is Resource.Error -> this@HomeViewModel.logETag("getUpcomingMovies: Fail -> ${upcomingMoviesResource.errorMessage}")
                     is Resource.Loading -> this@HomeViewModel.logDTag("getUpcomingMovies: Loading")
-                    is Resource.Success -> this@HomeViewModel.logDTag("getUpcomingMovies: Success")
+                    is Resource.Success -> {
+                        this@HomeViewModel.logDTag("getUpcomingMovies: Success")
+                        val upcomingMovies = upcomingMoviesResource.data.results
+                        if (upcomingMovies != null) {
+                            setAction(HomeAction.ShowUpcomingMovieList(upcomingMovies))
+                        }
+                    }
                 }
             }
         }

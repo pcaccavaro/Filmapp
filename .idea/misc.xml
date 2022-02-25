@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Git/Filmapp/app/src/main/res/layout/activity_home.xml" value="0.11354166666666667" />
+        <entry key="..\:/Git/Filmapp/app/src/main/res/drawable/background_white_with_top_10dp_radius.xml" value="0.124" />
+        <entry key="..\:/Git/Filmapp/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/Git/Filmapp/app/src/main/res/layout/activity_main.xml" value="0.17255434782608695" />
         <entry key="..\:/Git/Filmapp/app/src/main/res/layout/activity_sign_in.xml" value="0.1802536231884058" />
+        <entry key="..\:/Git/Filmapp/app/src/main/res/layout/movie_list_item.xml" value="0.16799999999999998" />
+        <entry key="..\:/Git/Filmapp/app/src/main/res/layout/movie_list_item_loading.xml" value="0.11302083333333333" />
       </map>
     </option>
   </component>
